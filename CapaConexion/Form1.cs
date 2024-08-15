@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,16 @@ namespace CapaConexion
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            SqlConnection conexion = 
+                new SqlConnection("Data Source=LAPTOP-2JMS5E5I\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True");
+            conexion.Open();
+            MessageBox.Show("Conectado");
+            conexion.Close();
+            MessageBox.Show("Gracias, Conexion finalizada");
         }
     }
 }
