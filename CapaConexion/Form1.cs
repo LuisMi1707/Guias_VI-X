@@ -22,10 +22,15 @@ namespace CapaConexion
         {
             SqlConnection conexion = 
                 new SqlConnection("Data Source=LAPTOP-2JMS5E5I\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True");
+            MessageBox.Show("Conexion creada");
             conexion.Open();
-            MessageBox.Show("Conectado");
+            string selectFrom = "SELECT * FROM [dbo].[Customers]";
+            SqlCommand comando = new SqlCommand(selectFrom, conexion);
+            SqlDataReader reader = comando.ExecuteReader();
+
             conexion.Close();
-            MessageBox.Show("Gracias, Conexion finalizada");
+            MessageBox.Show("Conexion cerrada");
+
         }
     }
 }
