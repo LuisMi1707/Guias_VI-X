@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaConexion.Modelos
 {
-    internal class customers
+    public class customers
     {
 
         public String CompanyName { get; set; }
