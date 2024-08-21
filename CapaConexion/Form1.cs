@@ -24,7 +24,7 @@ namespace CapaConexion
         private void btnCargar_Click(object sender, EventArgs e)
         {
             SqlConnection conexion = 
-                new SqlConnection("Data Source=LAPTOP-2JMS5E5I\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True");
+                new SqlConnection($"Data Source=LAPTOP-2JMS5E5I\\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True;");
             MessageBox.Show("Conexion creada");
             conexion.Open();
 
@@ -78,10 +78,16 @@ namespace CapaConexion
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DatosLayer.DataBase.ApplicationName = "Programacion 2 ejemplo";
+            DatosLayer.DataBase.ConnetionTimeout = 30;
             string cadenaConexion = DatosLayer.DataBase.ConnectionString;
-            MessageBox.Show(cadenaConexion);
-        }
 
+            var conectarDB = DatosLayer.DataBase.GetSqlConnection();
+
+            MessageBox.Show(cadenaConexion);
+
+        }
+        
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
