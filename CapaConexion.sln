@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaConexion", "CapaConexion\CapaConexion.csproj", "{97D5A54F-E5DD-41C6-8FDF-F73DBCBDA45F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatosLayer", "DatosLayer\DatosLayer.csproj", "{96AAA190-C3ED-4039-BD14-79A5D6ADE9CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{97D5A54F-E5DD-41C6-8FDF-F73DBCBDA45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97D5A54F-E5DD-41C6-8FDF-F73DBCBDA45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97D5A54F-E5DD-41C6-8FDF-F73DBCBDA45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AAA190-C3ED-4039-BD14-79A5D6ADE9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AAA190-C3ED-4039-BD14-79A5D6ADE9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AAA190-C3ED-4039-BD14-79A5D6ADE9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AAA190-C3ED-4039-BD14-79A5D6ADE9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

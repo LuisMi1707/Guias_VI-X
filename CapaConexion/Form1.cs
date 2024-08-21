@@ -78,7 +78,8 @@ namespace CapaConexion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            string cadenaConexion = DatosLayer.DataBase.ConnectionString;
+            MessageBox.Show(cadenaConexion);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
