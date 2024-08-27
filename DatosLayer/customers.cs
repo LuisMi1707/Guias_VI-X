@@ -8,7 +8,7 @@ namespace DatosLayer
 {
     public class customers
     {
-        public int CustomerID {  get; set; }
+        
         public String CompanyName { get; set; }
         public String ContactName { get; set; }
         public String ContactTitle { get; set; }
