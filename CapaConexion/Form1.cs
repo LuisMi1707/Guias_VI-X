@@ -48,8 +48,8 @@ namespace CapaConexion
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            // var filtro = Customers.FindAll(X => X.CompanyName.StartsWith(tbFiltro.Text));
-            // dataGrid.DataSource = filtro;
+            //var filtro = customers.FindAll(X => X.CompanyName.StartsWith(tbFiltro.Text));
+            //dataGrid.DataSource = filtro;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,7 +59,12 @@ namespace CapaConexion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            var cliente = customerRepository.ObtenerPorID(txtBuscar.Text);
+            if (cliente != null)
+            {
+                txtBuscar.Text = cliente.CompanyName;
+                MessageBox.Show(cliente.CompanyName);
+            }
         }
     }
 }

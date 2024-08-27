@@ -78,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(584, 142);
+            this.label2.Location = new System.Drawing.Point(563, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 5;
@@ -93,9 +93,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(656, 211);
+            this.btnBuscar.Location = new System.Drawing.Point(639, 191);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 34);
+            this.btnBuscar.Size = new System.Drawing.Size(106, 34);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar Cliente";
             this.btnBuscar.UseVisualStyleBackColor = true;
