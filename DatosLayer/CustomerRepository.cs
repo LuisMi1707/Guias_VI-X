@@ -1,9 +1,10 @@
-﻿using System;
+﻿//Codigo Actual de la clase CustomerRepository
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace DatosLayer
@@ -12,7 +13,6 @@ namespace DatosLayer
     {
         public List<customers> ObtenerTodos()
         {
-
             using (var conexion = DataBase.GetSqlConnection())
             {
                 String selectFrom = "";
@@ -32,22 +32,17 @@ namespace DatosLayer
                 using (SqlCommand comando = new SqlCommand(selectFrom, conexion))
                 {
                     SqlDataReader reader = comando.ExecuteReader();
-                    List<customers> customers = new List<customers>();
+                    List<customers> Customers = new List<customers>();
 
                     while (reader.Read())
                     {
-                        var Customers = LeerDelDataReader(reader);
-                        customers.Add(Customers);
+                        var customers = LeerDelDataReader(reader);
+                        Customers.Add(customers);
                     }
-                    return customers;
-
-
+                    return Customers;
                 }
             }
-
-
         }
-
         public customers ObtenerPorID(string id)
         {
 
@@ -67,18 +62,19 @@ namespace DatosLayer
                 selectForID = selectForID + "      ,[Phone] " + "\n";
                 selectForID = selectForID + "      ,[Fax] " + "\n";
                 selectForID = selectForID + "  FROM [dbo].[Customers] " + "\n";
-                selectForID = selectForID + $"  Where CustomerID = '{id}'";
+                selectForID = selectForID + $"  Where CustomerID = @customerId";
 
                 using (SqlCommand comando = new SqlCommand(selectForID, conexion))
                 {
+                    comando.Parameters.AddWithValue("customerId", id);
                     var reader = comando.ExecuteReader();
-                    customers customers = null;
+                    customers Customers = null;
                     //validadmos 
                     if (reader.Read())
                     {
-                        customers = LeerDelDataReader(reader);
+                        Customers = LeerDelDataReader(reader);
                     }
-                    return customers;
+                    return Customers;
                 }
             }
         }
@@ -100,5 +96,4 @@ namespace DatosLayer
             return customers;
         }
     }
-
 }
