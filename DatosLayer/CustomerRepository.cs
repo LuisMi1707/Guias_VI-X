@@ -11,7 +11,8 @@ namespace DatosLayer
 {
     public class CustomerRepository
     {
-        public List<customers> ObtenerTodos()
+
+        public List<Customers> ObtenerTodos()
         {
             using (var conexion = DataBase.GetSqlConnection())
             {
@@ -32,7 +33,7 @@ namespace DatosLayer
                 using (SqlCommand comando = new SqlCommand(selectFrom, conexion))
                 {
                     SqlDataReader reader = comando.ExecuteReader();
-                    List<customers> Customers = new List<customers>();
+                    List<Customers> Customers = new List<Customers>();
 
                     while (reader.Read())
                     {
@@ -43,7 +44,7 @@ namespace DatosLayer
                 }
             }
         }
-        public customers ObtenerPorID(string id)
+        public Customers ObtenerPorID(string id)
         {
 
             using (var conexion = DataBase.GetSqlConnection())
@@ -64,25 +65,26 @@ namespace DatosLayer
                 selectForID = selectForID + "  FROM [dbo].[Customers] " + "\n";
                 selectForID = selectForID + $"  Where CustomerID = @customerId";
 
+
                 using (SqlCommand comando = new SqlCommand(selectForID, conexion))
                 {
                     comando.Parameters.AddWithValue("customerId", id);
                     var reader = comando.ExecuteReader();
-                    customers Customers = null;
+                    Customers customers = null;
                     //validadmos 
                     if (reader.Read())
                     {
-                        Customers = LeerDelDataReader(reader);
+                        customers = LeerDelDataReader(reader);
                     }
-                    return Customers;
+                    return customers;
                 }
             }
         }
 
-        public customers LeerDelDataReader(SqlDataReader reader)
+        public Customers LeerDelDataReader(SqlDataReader reader)
         {
 
-            customers customers = new customers();
+            Customers customers = new Customers();
             customers.CompanyName = reader["CompanyName"] == DBNull.Value ? "" : (String)reader["CompanyName"];
             customers.ContactName = reader["ContactName"] == DBNull.Value ? "" : (String)reader["ContactName"];
             customers.ContactTitle = reader["ContactTitle"] == DBNull.Value ? "" : (String)reader["ContactTitle"];
@@ -95,5 +97,6 @@ namespace DatosLayer
             customers.Fax = reader["Fax"] == DBNull.Value ? "" : (String)reader["Fax"];
             return customers;
         }
+
     }
 }
