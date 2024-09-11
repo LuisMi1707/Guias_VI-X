@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace DatosLayer
 {
@@ -98,5 +99,38 @@ namespace DatosLayer
             return customers;
         }
 
+        public int InsertarCliente(Customers customer)
+        {
+            using (var conexion = DataBase.GetSqlConnection())
+            {
+                String insertInto = "";
+                insertInto = insertInto + "INSERT INTO [dbo].[Customers] " + "\n";
+                insertInto = insertInto + "           ([CustomerID] " + "\n";
+                insertInto = insertInto + "           ,[CompanyName] " + "\n";
+                insertInto = insertInto + "           ,[ContactName] " + "\n";
+                insertInto = insertInto + "           ,[ContactTitle] " + "\n";
+                insertInto = insertInto + "           ,[Address] " + "\n";
+                insertInto = insertInto + "           ,[City]) " + "\n";
+                insertInto = insertInto + "     VALUES " + "\n";
+                insertInto = insertInto + "           (@CustomerID " + "\n";
+                insertInto = insertInto + "           ,@CompanyName " + "\n";
+                insertInto = insertInto + "           ,@ContactName " + "\n";
+                insertInto = insertInto + "           ,@ContactTitle " + "\n";
+                insertInto = insertInto + "           ,@Address " + "\n";
+                insertInto = insertInto + "           ,@City)";
+
+                using (var comando = new SqlCommand(insertInto, conexion))
+                {
+                    comando.Parameters.AddWithValue("CustomerID", customer.CustomerID);
+                    comando.Parameters.AddWithValue("CompanyName", customer.CompanyName);
+                    comando.Parameters.AddWithValue("ContactName", customer.ContactName);
+                    comando.Parameters.AddWithValue("ContactTitle", customer.ContactName);
+                    comando.Parameters.AddWithValue("Address", customer.Address);
+                    comando.Parameters.AddWithValue("City", customer.City);
+                    var insertados = comando.ExecuteNonQuery();
+                    return insertados;
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace DatosLayer
 {
     public class Customers
     {
-        
+        public String CustomerID {  get; set; }
         public String CompanyName { get; set; }
         public String ContactName { get; set; }
         public String ContactTitle { get; set; }
