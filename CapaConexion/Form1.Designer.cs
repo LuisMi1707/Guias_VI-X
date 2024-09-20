@@ -48,6 +48,7 @@
             this.btnInsertar = new System.Windows.Forms.Button();
             this.tboxContactName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,7 +199,7 @@
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Location = new System.Drawing.Point(632, 369);
+            this.btnInsertar.Location = new System.Drawing.Point(548, 366);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(106, 34);
             this.btnInsertar.TabIndex = 18;
@@ -222,11 +223,22 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "ContactName";
             // 
+            // btModificar
+            // 
+            this.btModificar.Location = new System.Drawing.Point(671, 366);
+            this.btModificar.Name = "btModificar";
+            this.btModificar.Size = new System.Drawing.Size(106, 34);
+            this.btModificar.TabIndex = 21;
+            this.btModificar.Text = "Modificar";
+            this.btModificar.UseVisualStyleBackColor = true;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btModificar);
             this.Controls.Add(this.tboxContactName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnInsertar);
@@ -278,6 +290,7 @@
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.TextBox tboxContactName;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btModificar;
     }
 }
 

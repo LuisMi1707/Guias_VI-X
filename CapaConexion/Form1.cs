@@ -62,11 +62,12 @@ namespace CapaConexion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             var cliente = customerRepository.ObtenerPorID(txtBuscar.Text);
-            if (cliente != null)
-            {
-                txtBuscar.Text = cliente.CompanyName;
-                MessageBox.Show(cliente.CompanyName);
-            }
+            tboxCustomersID.Text = cliente.CustomerID;
+            tboxCompanyName.Text = cliente.CompanyName;
+            tboxContactName.Text = cliente.ContactName;
+            tboxContactTitle.Text = cliente.ContactTitle;   
+            tboxAddress.Text = cliente.Address;
+            tboxCity.Text = cliente.City;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -81,23 +82,17 @@ namespace CapaConexion
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            var nuevoCliente = new Customers
-            {
-                CustomerID = tboxCustomersID.Text,
-                CompanyName = tboxCompanyName.Text,
-                ContactName = tboxContactName.Text,
-                ContactTitle = tboxContactTitle.Text,
-                Address = tboxAddress.Text,
-                City = tboxCity.Text
-            };
+
             var resultado = 0;
+            var nuevoCliente = ObtenerNuevoCliente();
             if (validarCampoNull(nuevoCliente) == false)
             {
                 resultado = customerRepository.InsertarCliente(nuevoCliente);
+                MessageBox.Show("Guardado" + "Filas modificadas = " + resultado);
             }
             else
             {
-                MessageBox.Show("Debe completar todos los campos por favor" + resultado);
+                MessageBox.Show("Debe completar los campos por favor");
             }
             /*
             if (nuevoCliente.CustomerID == "") {
@@ -144,5 +139,26 @@ namespace CapaConexion
             return false;
         }
 
+        private void btModificar_Click(object sender, EventArgs e)
+        {
+            var actualizarCliente = ObtenerNuevoCliente();
+            int actualizadas = customerRepository.ActualizarCliente(actualizarCliente);
+            MessageBox.Show($"Filas actualizadas = {actualizadas}");
+        }
+
+        private Customers ObtenerNuevoCliente()
+        {
+            var nuevoCliente = new Customers
+            {
+                CustomerID = tboxCustomersID.Text,
+                CompanyName = tboxCompanyName.Text,
+                ContactName = tboxContactName.Text,
+                ContactTitle = tboxContactTitle.Text,
+                Address = tboxAddress.Text,
+                City = tboxCity.Text
+            };
+            return nuevoCliente;
+
+        }
     }
 }
